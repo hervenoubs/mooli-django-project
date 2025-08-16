@@ -3,12 +3,16 @@ from django.contrib.auth.forms import AuthenticationForm
 from django import forms
 from django.contrib.auth import login
 from django.utils import translation
-from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 class CustomLoginForm(AuthenticationForm):
-    email = forms.EmailField(label="Email", widget=forms.EmailInput)
-    password = forms.CharField(label="Password", widget=forms.PasswordInput)
+    username = forms.EmailField(label="Email", widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].label = "Email"
 
 @login_required
 def dashboard(request):
@@ -16,23 +20,24 @@ def dashboard(request):
 
 def register(request):
     if request.method == 'POST':
-        # Registration logic will appear here (with bonus features)
+        # Registration logic will appear here
         pass
     return render(request, 'register.html')
 
 def forgot_password(request):
     if request.method == 'POST':
-        # Password reset logic will appear here (with bonus features)
+        # Password reset logic will appear here
         pass
     return render(request, 'forgot_password.html')
 
 @login_required
 def set_language(request):
     lang = request.GET.get('lang', 'en')
-    translation.activate(lang)
-    if request.user.is_authenticated:
-        request.user.userprofile.default_language = lang
-        request.user.userprofile.save()
+    if lang in dict(settings.LANGUAGES):
+        translation.activate(lang)
+        if request.user.is_authenticated:
+            request.user.userprofile.default_language = lang
+            request.user.userprofile.save()
     return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
 
 @login_required

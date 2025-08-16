@@ -22,6 +22,16 @@
     <link rel="stylesheet" href="{% static 'assets/vendor/jvectormap/jquery-jvectormap-2.0.3.min.css' %}">
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'assets/css/mooli.min.css' %}">
+    <!-- Fallback to hide loader -->
+    <style>
+        .page-loader-wrapper {
+            transition: opacity 0.5s;
+        }
+        .page-loader-wrapper.hidden {
+            opacity: 0;
+            display: none;
+        }
+    </style>
     {% block extra_css %}{% endblock %}
 </head>
 <body class="theme-green">
@@ -64,6 +74,17 @@
         <script src="{% static 'assets/bundles/jvectormap.bundle.js' %}"></script>
         <script src="{% static 'assets/vendor/toastr/toastr.js' %}"></script>
         <script src="{% static 'assets/bundles/mainscripts.bundle.js' %}"></script>
+        <script>
+            // Fallback to hide loader after 2 seconds
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(function() {
+                    const loader = document.querySelector('.page-loader-wrapper');
+                    if (loader) {
+                        loader.classList.add('hidden');
+                    }
+                }, 2000);
+            });
+        </script>
         {% block extra_js %}{% endblock %}
     </div>
 </body>
