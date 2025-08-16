@@ -7,8 +7,14 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 
 class CustomLoginForm(AuthenticationForm):
-    username = forms.EmailField(label="Email", widget=forms.EmailInput(attrs={'class': 'form-control'}))
-    password = forms.CharField(label="Password", widget=forms.PasswordInput(attrs={'class': 'form-control'}))
+    username = forms.EmailField(
+        label="Email",
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter email', 'required': True})
+    )
+    password = forms.CharField(
+        label="Password",
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter password', 'required': True})
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
