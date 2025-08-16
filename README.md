@@ -1,44 +1,45 @@
-Mooli Django Project
-A Django-based admin dashboard built with the Mooli Bootstrap 4x template, featuring email-based authentication, multilingual support, and company profile switching.
-Features
+# Mooli Django Project  
+A Django-based admin dashboard built with the Mooli Bootstrap 4x template, featuring email-based authentication, multilingual support, and company profile switching.  
 
-Pages: Dashboard, Login, Register, Forgot Password.
-Authentication: Email-based login with custom user model (CustomUser).
-Registration: First name, last name, email, password; username from email; activation email with 1-hour expiry.
-Password Reset: Gmail SMTP for reset emails.
-Dashboard: Displays first name, logout, company switcher (Gmail-style), language switcher (English/French).
-Models: CustomUser, Company, UserProfile (ManyToMany for companies, ForeignKey for current company).
-Multilingual Support: English and French with language stored in UserProfile.
-Database: MySQL backend with phpMyAdmin.
-Static Files: Mooli template assets (Bootstrap, Font Awesome, etc.).
-Initial Data: Test user and company (test@example.com, HelloWorld Company).
+## Features  
 
-Prerequisites
+Pages: Dashboard, Login, Register, Forgot Password.  
+Authentication: Email-based login with custom user model (CustomUser).  
+Registration: First name, last name, email, password; username from email; activation email with 1-hour expiry.  
+Password Reset: Gmail SMTP for reset emails.  
+Dashboard: Displays first name, logout, company switcher (Gmail-style), language switcher (English/French).  
+Models: CustomUser, Company, UserProfile (ManyToMany for companies, ForeignKey for current company).  
+Multilingual Support: English and French with language stored in UserProfile.  
+Database: MySQL backend with phpMyAdmin.  
+Static Files: Mooli template assets (Bootstrap, Font Awesome, etc.).  
+Initial Data: Test user and company (test@example.com, HelloWorld Company).  
 
-Python 3.9.6
-MySQL
-phpMyAdmin
-Git
-Gmail account with App Password for SMTP
+## Prerequisites  
 
-Setup Instructions
+Python 3.9.6  
+MySQL  
+phpMyAdmin  
+Git  
+Gmail account with App Password for SMTP  
 
-Clone the Repository:
+## Setup Instructions  
+
+Clone the Repository:  
 git clone https://github.com/hervenoubs/mooli-django-project.git
 cd mooli-django-project/the_mooli_project
 
 
-Create and Activate Virtual Environment:
-python3 -m venv env
-source env/bin/activate  # Mac/Linux
-# env\Scripts\activate  # Windows
+Create and Activate Virtual Environment:  
+python3 -m venv env  
+source env/bin/activate  # Mac/Linux  
+# env\Scripts\activate  # Windows  
 
 
-Install Dependencies:
-pip install -r requirements.txt
+Install Dependencies:  
+pip install -r requirements.txt  
 
 
-Configure Environment Variables:Create a .env file:
+Configure Environment Variables:Create a .env file:  
 SECRET_KEY=your-secret-key
 DEBUG=True
 DB_NAME=mooli_project_db
@@ -50,28 +51,28 @@ EMAIL_HOST_USER=yourgmail@gmail.com
 EMAIL_HOST_PASSWORD=your_app_password
 
 
-Apply Migrations:
+Apply Migrations:  
 python3 manage.py makemigrations
 python3 manage.py migrate
 
 
-Load Initial Data:
+Load Initial Data:  
 python3 manage.py loaddata initial_data
 
 
-Compile Translations:
+Compile Translations:  
 python3 manage.py compilemessages
 
 
-Collect Static Files:
+Collect Static Files:  
 python3 manage.py collectstatic
 
 
-Run the Development Server:
+Run the Development Server:  
 python3 manage.py runserver
 
 
-Access the Application:
+## Access the Application:  
 
 Open http://127.0.0.1:8000/.
 Login: test@example.com with password from initial_data.json.
@@ -79,7 +80,7 @@ Admin: http://127.0.0.1:8000/admin/ (create superuser: python3 manage.py creates
 
 
 
-URLs
+## URLs  
 
 Dashboard: /
 Login: /login/
@@ -91,7 +92,7 @@ Activate Account: /activate/<uidb64>/<token>/
 Set Language: /set-language/?lang=en or /set-language/?lang=fr
 Switch Company: /switch-company/<company_id>/
 
-Debugging Tips
+## Debugging Tips  
 
 Static Files: Verify staticfiles/ after collectstatic.
 Translations: Check locale/fr/LC_MESSAGES/django.mo and LocaleMiddleware.
@@ -99,14 +100,14 @@ Database: Confirm MySQL tables in phpMyAdmin.
 Email: Test Gmail SMTP in shell.
 JavaScript Errors: Use Developer Tools → Console.
 
-Known Issues and Fixes
+## Known Issues and Fixes  
 
 Fixed loader issue with auth_base.html.
 Fixed read-only form by updating CustomLoginForm.
 Separated forms into forms.py.
 Configured Gmail SMTP for email sending.
 
-Repository Structure
+## Repository Structure  
 
 the_mooli_project/: Django project directory.
 mooli_app/: App with models, views, forms, URLs.
@@ -116,13 +117,13 @@ templates/: HTML templates (auth_base.html, base.html, etc.).
 locale/: Translation files (django.po, django.mo).
 submission-lab1/: Lab submission (lab1.md).
 
-Screenshots
+## Screenshots  
 
-Dashboard: [Add screenshot]
-Login: [Add screenshot]
-Register: [Add screenshot]
-Forgot Password: [Add screenshot]
+Dashboard: https://drive.google.com/file/d/1l_13s0VTLBE0KUviNdkk1IMSvSEtAN-p/view?usp=sharing
+Login: https://drive.google.com/file/d/1RgDF6R8SXMZNP92kYdZfXqHn-at3N-uC/view?usp=sharing
+Register: https://drive.google.com/file/d/1e9pcS80NUUJ3zJkqJ2E7RozTOAeI9NPV/view?usp=sharing
+Forgot Password: https://drive.google.com/file/d/1HYFqj38I7sYwO_9HrUMPPVqtsm4EfY19/view?usp=sharing
 
-Next Steps
+## Next Steps  
 
 Proceed to Lab 2 (AI chatbot with AWS Bedrock).
