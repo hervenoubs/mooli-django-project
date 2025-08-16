@@ -74,55 +74,54 @@ python3 manage.py runserver
 
 ## Access the Application:  
 
-Open http://127.0.0.1:8000/.
-Login: test@example.com with password from initial_data.json.
-Admin: http://127.0.0.1:8000/admin/ (create superuser: python3 manage.py createsuperuser).
-
+Open http://127.0.0.1:8000/.  
+Login: test@example.com with password from initial_data.json.  
+Admin: http://127.0.0.1:8000/admin/ (create superuser: python3 manage.py createsuperuser).  
 
 
 ## URLs  
 
-Dashboard: /
-Login: /login/
-Logout: /logout/
-Register: /register/
-Forgot Password: /forgot-password/
-Password Reset: /reset-password/, /reset/<uidb64>/<token>/, etc.
-Activate Account: /activate/<uidb64>/<token>/
-Set Language: /set-language/?lang=en or /set-language/?lang=fr
-Switch Company: /switch-company/<company_id>/
+Dashboard: /  
+Login: /login/  
+Logout: /logout/  
+Register: /register/  
+Forgot Password: /forgot-password/  
+Password Reset: /reset-password/, /reset/<uidb64>/<token>/, etc.  
+Activate Account: /activate/<uidb64>/<token>/  
+Set Language: /set-language/?lang=en or /set-language/?lang=fr  
+Switch Company: /switch-company/<company_id>/  
 
 ## Debugging Tips  
 
-Static Files: Verify staticfiles/ after collectstatic.
-Translations: Check locale/fr/LC_MESSAGES/django.mo and LocaleMiddleware.
-Database: Confirm MySQL tables in phpMyAdmin.
-Email: Test Gmail SMTP in shell.
-JavaScript Errors: Use Developer Tools → Console.
+Static Files: Verify staticfiles/ after collectstatic.  
+Translations: Check locale/fr/LC_MESSAGES/django.mo and LocaleMiddleware.  
+Database: Confirm MySQL tables in phpMyAdmin.  
+Email: Test Gmail SMTP in shell.  
+JavaScript Errors: Use Developer Tools → Console.  
 
 ## Known Issues and Fixes  
 
-Fixed loader issue with auth_base.html.
-Fixed read-only form by updating CustomLoginForm.
-Separated forms into forms.py.
-Configured Gmail SMTP for email sending.
+Fixed loader issue with auth_base.html.  
+Fixed read-only form by updating CustomLoginForm.  
+Separated forms into forms.py.  
+Configured Gmail SMTP for email sending.  
 
 ## Repository Structure  
 
-the_mooli_project/: Django project directory.
-mooli_app/: App with models, views, forms, URLs.
-static/: Mooli assets.
-staticfiles/: Collected static files.
-templates/: HTML templates (auth_base.html, base.html, etc.).
-locale/: Translation files (django.po, django.mo).
-submission-lab1/: Lab submission (lab1.md).
+the_mooli_project/: Django project directory.  
+mooli_app/: App with models, views, forms, URLs.  
+static/: Mooli assets.  
+staticfiles/: Collected static files.  
+templates/: HTML templates (auth_base.html, base.html, etc.).  
+locale/: Translation files (django.po, django.mo).  
+submission-lab1/: Lab submission (lab1.md).  
 
 ## Screenshots  
 
-Dashboard: https://drive.google.com/file/d/1l_13s0VTLBE0KUviNdkk1IMSvSEtAN-p/view?usp=sharing
-Login: https://drive.google.com/file/d/1RgDF6R8SXMZNP92kYdZfXqHn-at3N-uC/view?usp=sharing
-Register: https://drive.google.com/file/d/1e9pcS80NUUJ3zJkqJ2E7RozTOAeI9NPV/view?usp=sharing
-Forgot Password: https://drive.google.com/file/d/1HYFqj38I7sYwO_9HrUMPPVqtsm4EfY19/view?usp=sharing
+Dashboard: https://drive.google.com/file/d/1l_13s0VTLBE0KUviNdkk1IMSvSEtAN-p/view?usp=sharing  
+Login: https://drive.google.com/file/d/1RgDF6R8SXMZNP92kYdZfXqHn-at3N-uC/view?usp=sharing  
+Register: https://drive.google.com/file/d/1e9pcS80NUUJ3zJkqJ2E7RozTOAeI9NPV/view?usp=sharing  
+Forgot Password: https://drive.google.com/file/d/1HYFqj38I7sYwO_9HrUMPPVqtsm4EfY19/view?usp=sharing  
 
 ## Next Steps  
 
