@@ -3,8 +3,8 @@
 {% load static %}
 {% block title %}{% trans "Login - Mooli" %}{% endblock %}
 {% block content %}
-<div class="auth-main" style="display: block; visibility: visible;">
-    <div class="auth_div">
+<div class="auth-main">
+    <div class="auth_div vivify fadeIn">
         <div class="auth_brand">
             <a class="navbar-brand" href="{% url 'dashboard' %}"><img src="{% static 'assets/images/icon.svg' %}" width="50" class="d-inline-block align-top mr-2" alt="">{% trans "Mooli" %}</a>
         </div>
@@ -31,13 +31,21 @@
                     </div>
                     <button type="submit" class="btn btn-dark btn-lg btn-block">{% trans "LOGIN" %}</button>
                     <div class="bottom">
-                        <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="{% url 'forgot_password' %}">{% trans "Forgot password?" %}</a></span>
+                        <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="{% url 'password_reset' %}">{% trans "Forgot password?" %}</a></span>
                         <span>{% trans "Don't have an account?" %} <a href="{% url 'register' %}">{% trans "Register" %}</a></span>
                     </div>
                     <input type="hidden" name="next" value="{{ next }}">
                 </form>
             </div>
         </div>
+    </div>
+    <div class="animate_lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
     </div>
 </div>
 {% endblock %}

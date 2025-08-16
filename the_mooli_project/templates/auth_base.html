@@ -29,36 +29,35 @@
     </style>
     {% block extra_css %}{% endblock %}
 </head>
-<body class="theme-green">
-    <div id="body">
-        <!-- Page Loader -->
-        <div class="page-loader-wrapper">
-            <div class="loader">
-                <div class="mt-3"><img src="{% static 'assets/images/icon.svg' %}" width="40" height="40" alt="Mooli"></div>
-                <p>{% trans "Please wait..." %}</p>
-            </div>
+<body id="body" class="theme-green">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="mt-3"><img src="{% static 'assets/images/icon.svg' %}" width="40" height="40" alt="Mooli"></div>
+            <p>{% trans "Please wait..." %}</p>
         </div>
-        <!-- Overlay For Sidebars -->
-        <div class="overlay"></div>
-        <div id="wrapper">
-            {% block content %}
-            {% endblock %}
-        </div>
-        <!-- JavaScript -->
-        <script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script>
-        <script src="{% static 'assets/bundles/vendorscripts.bundle.js' %}"></script>
-        <script>
-            // Fallback to hide loader after 2 seconds
-            document.addEventListener('DOMContentLoaded', function() {
-                setTimeout(function() {
-                    const loader = document.querySelector('.page-loader-wrapper');
-                    if (loader) {
-                        loader.classList.add('hidden');
-                    }
-                }, 2000);
-            });
-        </script>
-        {% block extra_js %}{% endblock %}
     </div>
+    <!-- Login form -->
+
+    {% block content %}
+    {% endblock %}
+
+    <!-- JavaScript -->
+    <script src="{% static 'assets/bundles/libscripts.bundle.js' %}"></script>
+    <script src="{% static 'assets/bundles/vendorscripts.bundle.js' %}"></script>
+    <script>
+        // Fallback to hide loader after 2 seconds
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const loader = document.querySelector('.page-loader-wrapper');
+                if (loader) {
+                    loader.classList.add('hidden');
+                }
+            }, 2000);
+        });
+    </script>
+    {% block extra_js %}{% endblock %}
+    
 </body>
 </html>

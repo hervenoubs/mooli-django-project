@@ -1,27 +1,42 @@
 [
-  {
-      "model": "mooli_app.company",
-      "pk": 1,
-      "fields": {
-          "name": "HelloWorld Company"
-      }
-  },
-  {
-      "model": "mooli_app.customuser",
-      "pk": 1,
-      "fields": {
-          "email": "test@example.com",
-          "password": "pbkdf2_sha256$600000$BCoZXZy308W5DOx2k34EeG$e6nwgSiDJePVRCqqIHpwfuCefLJ93BlQyD6EEga23TI=",
-          "username": "testuser"
-      }
-  },
-  {
-      "model": "mooli_app.userprofile",
-      "pk": 1,
-      "fields": {
-          "user": 1,
-          "company": 1,
-          "default_language": "en"
-      }
-  }
+    {
+        "model": "mooli_app.customuser",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$600000$Q0PYC9seYorm7oysiWnn30$I0JAd5nb+u72LCVUHoD7E1IbxqzzH5GXDl8d53J9uoU=",
+            "last_login": null,
+            "is_superuser": false,
+            "username": "test",
+            "first_name": "Test",
+            "last_name": "User",
+            "email": "test@example.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2025-08-16T22:00:00Z"
+        }
+    },
+    {
+        "model": "mooli_app.company",
+        "pk": 1,
+        "fields": {
+            "name": "HelloWorld Company"
+        }
+    },
+    {
+        "model": "mooli_app.userprofile",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "default_language": "en",
+            "current_company": 1
+        }
+    },
+    {
+        "model": "mooli_app.userprofile_companies",
+        "pk": 1,
+        "fields": {
+            "userprofile": 1,
+            "company": 1
+        }
+    }
 ]
