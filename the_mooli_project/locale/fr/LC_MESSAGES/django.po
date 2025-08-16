@@ -3,213 +3,220 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-16 06:16+0000\n"
-"PO-Revision-Date: 2025-08-16 01:27-0700\n"
-"Last-Translator: \n"
-"Language-Team: French\n"
+"POT-Creation-Date: 2025-08-16 17:13+0000\n"
+"PO-Revision-Date: 2025-08-17 14:30+0200\n"
+"Last-Translator: Your Name <your.email@example.com>\n"
+"Language-Team: French <fr@translation.example.com>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: templates/base.html:33
+#: templates/activation_invalid.html:4
+msgid "Activation Invalid - Mooli"
+msgstr "Activation invalide - Mooli"
+
+#: templates/activation_invalid.html:9 templates/forgot_password.html:9
+#: templates/login.html:9 templates/password_reset_complete.html:9
+#: templates/password_reset_confirm.html:9 templates/password_reset_done.html:9
+#: templates/register.html:9
+msgid "Mooli"
+msgstr "Mooli"
+
+#: templates/activation_invalid.html:13
+msgid "Activation Invalid"
+msgstr "Activation invalide"
+
+#: templates/activation_invalid.html:16
+msgid "The activation link is invalid or has expired. Please register again."
+msgstr ""
+"Le lien d'activation est invalide ou a expiré. Veuillez vous réinscrire."
+
+#: templates/activation_invalid.html:17 templates/login.html:35
+msgid "Register"
+msgstr "S'inscrire"
+
+#: templates/auth_base.html:38 templates/base.html:43
 msgid "Please wait..."
-msgstr "Patienter instant..."
+msgstr "Veuillez patienter..."
 
 #: templates/forgot_password.html:4
-#, fuzzy
-#| msgid "Forgot password?"
 msgid "Forgot Password - Mooli"
-msgstr "Mot de passe oublié ?"
+msgstr "Mot de passe oublié - Mooli"
 
-#: templates/forgot_password.html:13 templates/login.html:13
-#: templates/register.html:13
-msgid "Mooli"
-msgstr ""
+#: templates/forgot_password.html:13
+msgid "Reset your password"
+msgstr "Réinitialiser votre mot de passe"
 
-#: templates/forgot_password.html:17
-msgid "Oops"
-msgstr "Oups"
+#: templates/forgot_password.html:19 templates/login.html:19
+#: templates/partials/sidebar.html:86 templates/register.html:33
+msgid "Email"
+msgstr "E-mail"
 
-#: templates/forgot_password.html:17
-msgid "forgot something?"
-msgstr "oublié quelque chose ?"
+#: templates/forgot_password.html:22
+msgid "SUBMIT"
+msgstr "SOUMETTRE"
 
-#: templates/forgot_password.html:23
-msgid "Type email to recover password."
-msgstr "Entrez l'email pour récupérer le mot de passe."
+#: templates/forgot_password.html:24
+msgid "Remember your password?"
+msgstr "Vous souvenez-vous de votre mot de passe ?"
 
-#: templates/forgot_password.html:26
-msgid "RESET PASSWORD"
-msgstr "RÉINITIALISER LE MOT DE PASSE"
-
-#: templates/forgot_password.html:28
-msgid "Know your password?"
-msgstr "Vous connaissez votre mot de passe ?"
-
-#: templates/forgot_password.html:28 templates/register.html:38
+#: templates/forgot_password.html:24 templates/register.html:42
 msgid "Login"
 msgstr "Connexion"
 
 #: templates/index.html:3
-#, fuzzy
-#| msgid "Dashboard"
 msgid "Dashboard - Mooli"
-msgstr "Tableau de bord"
+msgstr "Tableau de bord - Mooli"
 
-#: templates/index.html:8
-msgid "Hi, Welcomeback!"
-msgstr "Salut, Bienvenue!"
+#: templates/index.html:8 templates/partials/sidebar.html:15
+msgid "Welcome"
+msgstr "Bienvenue"
 
 #: templates/index.html:9
-msgid "JustDo Dashboard"
-msgstr "Tableau de bord JustDo"
-
-#: templates/index.html:14
-msgid "Operation"
-msgstr ""
-
-#: templates/index.html:18
-msgid "Earning"
-msgstr ""
-
-#: templates/index.html:22
-msgid "Revenue"
-msgstr ""
-
-#: templates/index.html:33
-msgid "Toggle navigation"
-msgstr ""
-
-#: templates/index.html:38
-msgid "Analytics"
-msgstr ""
-
-#: templates/index.html:39
 #, fuzzy
 #| msgid "Dashboard"
-msgid "Covid 19 Dashboard"
+msgid "JustDo Dashboard"
 msgstr "Tableau de bord"
 
-#: templates/index.html:42
-msgid "ToDo"
-msgstr ""
+#: templates/index.html:11
+msgid "Current Company"
+msgstr "Entreprise actuelle"
 
-#: templates/index.html:43 templates/partials/sidebar.html:20
+#: templates/index.html:13
+msgid "No company selected"
+msgstr "Aucune entreprise sélectionnée"
+
+#: templates/index.html:19
+msgid "Operation"
+msgstr "Opération"
+
+#: templates/index.html:23
+msgid "Earning"
+msgstr "Gains"
+
+#: templates/index.html:27
+msgid "Revenue"
+msgstr "Revenus"
+
+#: templates/index.html:38
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+#: templates/index.html:43
+msgid "Analytics"
+msgstr "Analytique"
+
+#: templates/index.html:44
+msgid "Covid 19 Dashboard"
+msgstr "Tableau de bord COVID-19"
+
+#: templates/index.html:47
+msgid "ToDo"
+msgstr "À faire"
+
+#: templates/index.html:48 templates/partials/sidebar.html:20
 msgid "Settings"
 msgstr "Paramètres"
 
-#: templates/index.html:55
+#: templates/index.html:60
 msgid "Total Doctors"
 msgstr "Total des médecins"
 
-#: templates/index.html:59 templates/index.html:71 templates/index.html:83
-#: templates/index.html:95
+#: templates/index.html:64 templates/index.html:76 templates/index.html:88
+#: templates/index.html:100
 msgid "Last year"
 msgstr "L'année dernière"
 
-#: templates/index.html:67
+#: templates/index.html:72
 msgid "Total Pharmacists"
 msgstr "Total des pharmaciens"
 
-#: templates/index.html:79
+#: templates/index.html:84
 msgid "Total Nurses"
-msgstr "Total des infirmiers"
+msgstr "Total des infirmiers/infirmières"
 
-#: templates/index.html:91
+#: templates/index.html:96
 msgid "Total Patients"
 msgstr "Total des patients"
 
-#: templates/index.html:109
+#: templates/index.html:114
 msgid "Overview"
 msgstr "Aperçu"
 
-#: templates/index.html:110
+#: templates/index.html:115
 msgid ""
 "Statistics, Predictive Analytics Data Visualization, Big Data Analytics, etc."
 msgstr ""
-"Statistiques, Analyse Prédictive, Visualisation de Données, Analyse de Big "
-"Data, etc."
-
-#: templates/index.html:117
-msgid "Today’s"
-msgstr ""
-
-#: templates/index.html:118
-msgid "This Week"
-msgstr ""
-
-#: templates/index.html:119
-#, fuzzy
-#| msgid "Last year"
-msgid "Last Week"
-msgstr "L'année dernière"
-
-#: templates/index.html:120
-#, fuzzy
-#| msgid "Traffic this Month"
-msgid "This Month"
-msgstr "Trafic ce mois-ci"
-
-#: templates/index.html:121
-msgid "Last Month"
-msgstr ""
+"Statistiques, visualisation de données analytiques prédictives, analyse de "
+"big data, etc."
 
 #: templates/index.html:122
-msgid "Last 12 Month"
-msgstr ""
+#, fuzzy
+#| msgid "Today's"
+msgid "Today’s"
+msgstr "Aujourd'hui"
 
 #: templates/index.html:123
-msgid "Custom Dates"
-msgstr ""
+msgid "This Week"
+msgstr "Cette semaine"
 
-#: templates/index.html:126 templates/partials/navbar.html:25
+#: templates/index.html:124
+msgid "Last Week"
+msgstr "La semaine dernière"
+
+#: templates/index.html:125
+msgid "This Month"
+msgstr "Ce mois-ci"
+
+#: templates/index.html:126
+msgid "Last Month"
+msgstr "Le mois dernier"
+
+#: templates/index.html:127
+msgid "Last 12 Month"
+msgstr "Les 12 derniers mois"
+
+#: templates/index.html:128
+msgid "Custom Dates"
+msgstr "Dates personnalisées"
+
+#: templates/index.html:131 templates/partials/navbar.html:25
 msgid "Report"
 msgstr "Rapport"
 
-#: templates/index.html:127
-#, fuzzy
-#| msgid "Report"
+#: templates/index.html:132
 msgid "Export"
-msgstr "Rapport"
+msgstr "Exporter"
 
 #: templates/login.html:4
 msgid "Login - Mooli"
-msgstr ""
+msgstr "Connexion - Mooli"
 
-#: templates/login.html:17
+#: templates/login.html:13
 msgid "Login to your account"
 msgstr "Connectez-vous à votre compte"
 
-#: templates/login.html:23 templates/partials/sidebar.html:77
-#: templates/register.html:25
-msgid "Email"
-msgstr "Email"
-
-#: templates/login.html:27 templates/register.html:29
+#: templates/login.html:23 templates/register.html:37
 msgid "Password"
 msgstr "Mot de passe"
 
-#: templates/login.html:33
+#: templates/login.html:29
 msgid "Remember me"
 msgstr "Se souvenir de moi"
 
-#: templates/login.html:36
+#: templates/login.html:32
 msgid "LOGIN"
-msgstr ""
+msgstr "SE CONNECTER"
 
-#: templates/login.html:38
+#: templates/login.html:34
 msgid "Forgot password?"
 msgstr "Mot de passe oublié ?"
 
-#: templates/login.html:39
+#: templates/login.html:35
 msgid "Don't have an account?"
 msgstr "Vous n'avez pas de compte ?"
-
-#: templates/login.html:39 templates/register.html:36
-msgid "Register"
-msgstr "S'inscrire"
 
 #: templates/partials/navbar.html:13
 msgid "Search here..."
@@ -227,7 +234,7 @@ msgstr "Créer"
 msgid "User"
 msgstr "Utilisateur"
 
-#: templates/partials/navbar.html:24 templates/partials/sidebar.html:73
+#: templates/partials/navbar.html:24 templates/partials/sidebar.html:82
 msgid "Invoice"
 msgstr "Facture"
 
@@ -253,7 +260,7 @@ msgstr "Dr. Folisise Chosielie"
 
 #: templates/partials/navbar.html:36
 msgid "12min ago"
-msgstr "Il y a 12 minutes"
+msgstr "Il y a 12 min"
 
 #: templates/partials/navbar.html:36
 msgid "New Messages"
@@ -265,11 +272,11 @@ msgstr "As. Louis Henry"
 
 #: templates/partials/navbar.html:37
 msgid "38min ago"
-msgstr "Il y a 38 minutes"
+msgstr "Il y a 38 min"
 
 #: templates/partials/navbar.html:37
 msgid "Design bug fix"
-msgstr "Correction de bug de design"
+msgstr "Correction de bug de conception"
 
 #: templates/partials/navbar.html:38
 msgid "Dr. Debra Stewart"
@@ -277,7 +284,7 @@ msgstr "Dr. Debra Stewart"
 
 #: templates/partials/navbar.html:38
 msgid "2hr ago"
-msgstr "Il y a 2 heures"
+msgstr "Il y a 2 h"
 
 #: templates/partials/navbar.html:38
 msgid "Fix Bug"
@@ -293,11 +300,11 @@ msgstr "Problème résolu"
 
 #: templates/partials/navbar.html:48
 msgid "9:10 AM"
-msgstr "9:10"
+msgstr "09:10"
 
 #: templates/partials/navbar.html:48
 msgid "WE have fix all Design bug with Responsive"
-msgstr "Nous avons corrigé tous les bugs de design avec la responsivité"
+msgstr "Nous avons corrigé tous les bugs de conception responsive"
 
 #: templates/partials/navbar.html:49
 msgid "New User"
@@ -305,11 +312,11 @@ msgstr "Nouvel utilisateur"
 
 #: templates/partials/navbar.html:49
 msgid "9:15 AM"
-msgstr "9:15"
+msgstr "09:15"
 
 #: templates/partials/navbar.html:49
 msgid "I feel great! Thanks team"
-msgstr "Je me sens super ! Merci l'équipe"
+msgstr "Je me sens bien ! Merci à l'équipe"
 
 #: templates/partials/navbar.html:50
 msgid "Server Warning"
@@ -317,7 +324,7 @@ msgstr "Avertissement du serveur"
 
 #: templates/partials/navbar.html:50
 msgid "9:17 AM"
-msgstr "9:17"
+msgstr "09:17"
 
 #: templates/partials/navbar.html:50
 msgid "Your connection is not private"
@@ -325,31 +332,31 @@ msgstr "Votre connexion n'est pas privée"
 
 #: templates/partials/navbar.html:51
 msgid "2 New Feedback"
-msgstr "2 nouveaux retours"
+msgstr "2 nouveaux commentaires"
 
 #: templates/partials/navbar.html:51
 msgid "9:22 AM"
-msgstr "9:22"
+msgstr "09:22"
 
 #: templates/partials/navbar.html:51
 msgid "It will give a smart finishing to your site"
-msgstr "Cela donnera une finition intelligente à votre site"
+msgstr "Cela donnera une finition élégante à votre site"
 
 #: templates/partials/navbar.html:57
 msgid "US English"
-msgstr "Anglais US"
+msgstr "Anglais américain"
 
-#: templates/partials/navbar.html:58
+#: templates/partials/navbar.html:58 templates/partials/sidebar.html:40
 msgid "French"
 msgstr "Français"
 
 #: templates/partials/navbar.html:61
 msgid "Right Menu"
-msgstr "Menu de droite"
+msgstr "Menu droit"
 
 #: templates/partials/navbar.html:74
 msgid "Recent search result"
-msgstr "Résultat de recherche récent"
+msgstr "Résultats de recherche récents"
 
 #: templates/partials/navbar.html:76
 msgid "Clear data"
@@ -357,11 +364,11 @@ msgstr "Effacer les données"
 
 #: templates/partials/navbar.html:83
 msgid "Crush it - Bootstrap Admin Application Template & Ui Kit"
-msgstr "Crush it - Modèle d'application admin Bootstrap & Kit UI"
+msgstr "Crush it - Modèle d'application admin Bootstrap & UI Kit"
 
 #: templates/partials/navbar.html:84
 msgid "It is a long established fact that a reader will be distracted."
-msgstr "Il est établi de longue date qu'un lecteur sera distrait."
+msgstr "Il est établi depuis longtemps qu'un lecteur sera distrait."
 
 #: templates/partials/navbar.html:87
 msgid "React"
@@ -373,11 +380,13 @@ msgstr "27 déc. 2020"
 
 #: templates/partials/navbar.html:93
 msgid "Epic Pro - HR & Project Management Admin Template and UI Kit"
-msgstr "Epic Pro - Modèle d'administration RH & Gestion de projet et Kit UI"
+msgstr "Epic Pro - Modèle admin pour RH & gestion de projet et UI Kit"
 
 #: templates/partials/navbar.html:94
 msgid "The point of using Lorem Ipsum is that it has a more-or-less English."
-msgstr "L'intérêt d'utiliser Lorem Ipsum est qu'il a un anglais plus ou moins."
+msgstr ""
+"L'intérêt d'utiliser Lorem Ipsum est qu'il a une distribution plus ou moins "
+"anglaise."
 
 #: templates/partials/navbar.html:97
 msgid "HTML"
@@ -389,7 +398,7 @@ msgstr "13 oct. 2020"
 
 #: templates/partials/navbar.html:103
 msgid "Qubes - Responsive Admin Dashboard Template"
-msgstr "Qubes - Modèle de tableau de bord admin réactif"
+msgstr "Qubes - Modèle de tableau de bord admin responsive"
 
 #: templates/partials/navbar.html:104
 msgid "Commodo excepteur non ut aliqua ex qui velit sed esse consequat in"
@@ -405,11 +414,7 @@ msgstr "27 sept. 2020"
 
 #: templates/partials/sidebar.html:6
 msgid "Mooli-Hospital"
-msgstr "Mooli-Hôpital"
-
-#: templates/partials/sidebar.html:15
-msgid "Welcome"
-msgstr "Bienvenue"
+msgstr "Hôpital Mooli"
 
 #: templates/partials/sidebar.html:18
 msgid "My Profile"
@@ -427,146 +432,219 @@ msgstr "Déconnexion"
 msgid "Switch Company"
 msgstr "Changer d'entreprise"
 
-#: templates/partials/sidebar.html:38
+#: templates/partials/sidebar.html:32
+msgid "No companies available"
+msgstr "Aucune entreprise disponible"
+
+#: templates/partials/sidebar.html:37
+msgid "Language"
+msgstr "Langue"
+
+#: templates/partials/sidebar.html:39
+msgid "English"
+msgstr "Anglais"
+
+#: templates/partials/sidebar.html:47
 msgid "Hospital"
 msgstr "Hôpital"
 
-#: templates/partials/sidebar.html:39
+#: templates/partials/sidebar.html:48
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: templates/partials/sidebar.html:41
+#: templates/partials/sidebar.html:50
 msgid "Doctors"
 msgstr "Médecins"
 
-#: templates/partials/sidebar.html:43
+#: templates/partials/sidebar.html:52
 msgid "All Doctors"
 msgstr "Tous les médecins"
 
-#: templates/partials/sidebar.html:44
+#: templates/partials/sidebar.html:53
 msgid "Add Doctors"
 msgstr "Ajouter des médecins"
 
-#: templates/partials/sidebar.html:45
+#: templates/partials/sidebar.html:54
 msgid "Doctors Profile"
 msgstr "Profil des médecins"
 
-#: templates/partials/sidebar.html:46
+#: templates/partials/sidebar.html:55
 msgid "Doctors Schedule"
 msgstr "Emploi du temps des médecins"
 
-#: templates/partials/sidebar.html:49
+#: templates/partials/sidebar.html:58
 msgid "Appointment"
 msgstr "Rendez-vous"
 
-#: templates/partials/sidebar.html:50
+#: templates/partials/sidebar.html:59
 msgid "Todo List"
-msgstr "Liste des tâches"
+msgstr "Liste de tâches"
 
-#: templates/partials/sidebar.html:52
+#: templates/partials/sidebar.html:61
 msgid "Patients"
 msgstr "Patients"
 
-#: templates/partials/sidebar.html:54
+#: templates/partials/sidebar.html:63
 msgid "All Patient"
 msgstr "Tous les patients"
 
-#: templates/partials/sidebar.html:55
+#: templates/partials/sidebar.html:64
 msgid "Add Patient"
 msgstr "Ajouter un patient"
 
-#: templates/partials/sidebar.html:56
+#: templates/partials/sidebar.html:65
 msgid "Patient Profile"
 msgstr "Profil du patient"
 
-#: templates/partials/sidebar.html:57
+#: templates/partials/sidebar.html:66
 msgid "Patient Invoices"
 msgstr "Factures des patients"
 
-#: templates/partials/sidebar.html:61
+#: templates/partials/sidebar.html:70
 msgid "Room Allotment"
 msgstr "Attribution des chambres"
 
-#: templates/partials/sidebar.html:63
+#: templates/partials/sidebar.html:72
 msgid "Alloted Rooms"
 msgstr "Chambres attribuées"
 
-#: templates/partials/sidebar.html:64
+#: templates/partials/sidebar.html:73
 msgid "Add Allotment"
 msgstr "Ajouter une attribution"
 
-#: templates/partials/sidebar.html:67
+#: templates/partials/sidebar.html:76
 msgid "Departments"
 msgstr "Départements"
 
-#: templates/partials/sidebar.html:69 templates/partials/sidebar.html:71
+#: templates/partials/sidebar.html:78 templates/partials/sidebar.html:80
 msgid "Payments"
 msgstr "Paiements"
 
-#: templates/partials/sidebar.html:72
+#: templates/partials/sidebar.html:81
 msgid "Add Payments"
 msgstr "Ajouter des paiements"
 
-#: templates/partials/sidebar.html:76
+#: templates/partials/sidebar.html:85
 msgid "Admin"
-msgstr ""
+msgstr "Administration"
 
-#: templates/partials/sidebar.html:78
+#: templates/partials/sidebar.html:87
 msgid "Chat"
 msgstr "Chat"
 
-#: templates/partials/sidebar.html:79
+#: templates/partials/sidebar.html:88
 msgid "Our Staffs"
 msgstr "Notre personnel"
 
-#: templates/partials/sidebar.html:80
+#: templates/partials/sidebar.html:89
 msgid "Contacts"
 msgstr "Contacts"
 
-#: templates/partials/sidebar.html:81
+#: templates/partials/sidebar.html:90
 msgid "File Manager"
 msgstr "Gestionnaire de fichiers"
 
-#: templates/partials/sidebar.html:82
+#: templates/partials/sidebar.html:91
 msgid "Our Centres"
 msgstr "Nos centres"
 
-#: templates/partials/sidebar.html:83 templates/partials/sidebar.html:85
+#: templates/partials/sidebar.html:92 templates/partials/sidebar.html:94
 msgid "Social"
-msgstr "Social"
+msgstr "Réseaux sociaux"
 
-#: templates/partials/sidebar.html:84
+#: templates/partials/sidebar.html:93
 msgid "Blog"
 msgstr "Blog"
 
-#: templates/partials/sidebar.html:88
+#: templates/partials/sidebar.html:97
 msgid "Traffic this Month"
 msgstr "Trafic ce mois-ci"
 
-#: templates/partials/sidebar.html:94
+#: templates/partials/sidebar.html:103
 msgid "Server Load"
 msgstr "Charge du serveur"
 
-#: templates/register.html:4
-msgid "Sign Up - Mooli"
-msgstr ""
+#: templates/password_reset_complete.html:4
+msgid "Password Reset Complete - Mooli"
+msgstr "Réinitialisation du mot de passe terminée - Mooli"
 
-#: templates/register.html:17
+#: templates/password_reset_complete.html:13
+msgid "Password Reset Complete"
+msgstr "Réinitialisation du mot de passe terminée"
+
+#: templates/password_reset_complete.html:16
+msgid "Your password has been set. You may go ahead and log in now."
+msgstr ""
+"Votre mot de passe a été défini. Vous pouvez maintenant vous connecter."
+
+#: templates/password_reset_complete.html:17
+msgid "Log In"
+msgstr "Se connecter"
+
+#: templates/password_reset_confirm.html:4
+msgid "Enter New Password - Mooli"
+msgstr "Entrez un nouveau mot de passe - Mooli"
+
+#: templates/password_reset_confirm.html:13
+msgid "Enter new password"
+msgstr "Entrez un nouveau mot de passe"
+
+#: templates/password_reset_confirm.html:19
+msgid "New Password"
+msgstr "Nouveau mot de passe"
+
+#: templates/password_reset_confirm.html:23
+msgid "Confirm New Password"
+msgstr "Confirmez le nouveau mot de passe"
+
+#: templates/password_reset_confirm.html:26
+msgid "CHANGE PASSWORD"
+msgstr "MODIFIER LE MOT DE PASSE"
+
+#: templates/password_reset_done.html:4
+msgid "Password Reset Sent - Mooli"
+msgstr "Réinitialisation du mot de passe envoyée - Mooli"
+
+#: templates/password_reset_done.html:13
+msgid "Password Reset Sent"
+msgstr "Réinitialisation du mot de passe envoyée"
+
+#: templates/password_reset_done.html:16
+msgid ""
+"We've emailed you instructions for setting your password. If you don't "
+"receive an email, please check your spam folder."
+msgstr ""
+"Nous vous avons envoyé par e-mail les instructions pour définir votre mot de "
+"passe. Si vous ne recevez pas d'e-mail, veuillez vérifier votre dossier de "
+"spam."
+
+#: templates/password_reset_done.html:17
+msgid "Back to Login"
+msgstr "Retour à la connexion"
+
+#: templates/register.html:4
+msgid "Register - Mooli"
+msgstr "S'inscrire - Mooli"
+
+#: templates/register.html:13
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: templates/register.html:20
-msgid "Sign in with Facebook"
-msgstr "Se connecter avec Facebook"
-
 #: templates/register.html:21
-msgid "OR"
-msgstr "OU"
+msgid "First Name"
+msgstr "Prénom"
 
-#: templates/register.html:33
-msgid "Confirm Password"
-msgstr "Confirmer le mot de passe"
+#: templates/register.html:27
+msgid "Last Name"
+msgstr "Nom"
 
-#: templates/register.html:38
+#: templates/register.html:40
+msgid "REGISTER"
+msgstr "S'INSCRIRE"
+
+#: templates/register.html:42
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
+
+#~ msgid "Mooli Dashboard"
+#~ msgstr "Tableau de bord Mooli"

@@ -7,6 +7,11 @@
         <div class="col-lg-4 col-md-12 col-sm-12">
             <h1>{% trans "Welcome" %}, {{ user.first_name }}!</h1>
             <span>{% trans "JustDo Dashboard" %}</span>
+            {% if user.is_authenticated and user.userprofile.current_company %}
+                <p>{% trans "Current Company" %}: {{ user.userprofile.current_company.name }}</p>
+            {% else %}
+                <p>{% trans "No company selected" %}</p>
+            {% endif %}
         </div>
         <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
             <div class="d-flex align-items-center justify-content-lg-end mt-4 mt-lg-0 flex-wrap vivify pullUp delay-550">

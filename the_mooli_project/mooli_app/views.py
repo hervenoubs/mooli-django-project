@@ -8,11 +8,13 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.utils import timezone
 from django.core.mail import send_mail
-from django.urls import reverse
+from django.urls import reverse, translate_url
 from .models import CustomUser, UserProfile
 from django.contrib.auth.hashers import make_password
 from .forms import RegistrationForm, CustomLoginForm
 from django.contrib.auth.views import LoginView as DjangoLoginView
+from django.utils.translation import activate as translation_activate, get_language_from_path
+from urllib.parse import urlparse
 
 class LoginView(DjangoLoginView):
     template_name = 'login.html'
@@ -21,9 +23,14 @@ class LoginView(DjangoLoginView):
     def form_valid(self, form):
         response = super().form_valid(form)
         # Activate language from user profile
-        profile = self.request.user.userprofile
-        translation.activate(profile.default_language)
-        self.request.session[translation.LANGUAGE_SESSION_KEY] = profile.default_language
+        try:
+            profile = self.request.user.userprofile
+            translation.activate(profile.default_language)
+            self.request.session[settings.LANGUAGE_SESSION_KEY] = profile.default_language
+        except UserProfile.DoesNotExist:
+            # Fallback for users without a profile (e.g., superuser)
+            translation.activate(settings.LANGUAGE_CODE)
+            self.request.session[settings.LANGUAGE_SESSION_KEY] = settings.LANGUAGE_CODE
         return response
 
 @login_required
@@ -98,17 +105,36 @@ def activate(request, uidb64, token):
         login(request, user)
         return redirect('dashboard')
     else:
-        return render(request, 'activation_invalid.html')  # Create this template
+        return render(request, 'activation_invalid.html')
 
 @login_required
 def set_language(request):
     lang = request.GET.get('lang', 'en')
+    referer = request.META.get('HTTP_REFERER', '/')
+    
+    # Extract just the path from the referer URL
+    parsed_referer = urlparse(referer)
+    next_url = parsed_referer.path  # This gives just "/" or "/some/path/"
+    
     if lang in dict(settings.LANGUAGES):
-        translation.activate(lang)
+        translation_activate(lang)
+        request.session[settings.LANGUAGE_SESSION_KEY] = lang
+        
         if request.user.is_authenticated:
-            request.user.userprofile.default_language = lang
-            request.user.userprofile.save()
-    return redirect(request.META.get('HTTP_REFERER', 'dashboard'))
+            try:
+                profile = request.user.userprofile
+                profile.default_language = lang
+                profile.save()
+            except UserProfile.DoesNotExist:
+                pass
+        
+        # Handle URL prefixing
+        if settings.USE_I18N_URL_PREFIXES:
+            # Remove any existing language prefix
+            path_without_lang = next_url[3:] if len(next_url) > 3 and next_url[3] == '/' else next_url
+            next_url = f'/{lang}{path_without_lang}'
+    
+    return redirect(next_url)
 
 @login_required
 def switch_company(request, company_id):
@@ -121,9 +147,3 @@ def switch_company(request, company_id):
         except profile.companies.model.DoesNotExist:
             pass  # Handle invalid company_id
     return redirect('dashboard')
-
-def forgot_password(request):
-    if request.method == 'POST':
-        # Password reset logic will appear here
-        pass
-    return render(request, 'forgot_password.html')

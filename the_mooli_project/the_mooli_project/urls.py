@@ -18,11 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls.i18n import i18n_patterns  # Add this import
 
+# Regular URLs that shouldn't be translated
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('mooli_app.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# URLs that should have language prefixes
+urlpatterns += i18n_patterns(
+    path('', include('mooli_app.urls')),  # Your app's URLs will now have language prefixes
+    prefix_default_language=False  # Optional: /en/ prefix won't be added for default language
+)
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,103 +1,131 @@
 {% load i18n %}
 {% load static %}
 <div id="left-sidebar" class="sidebar light_active">
-  <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
-  <div class="navbar-brand">
-      <a href="{% url 'dashboard' %}"><img src="{% static 'assets/images/icon.svg' %}" alt="Mooli Logo" class="img-fluid logo"><span>{% trans "Mooli-Hospital" %}</span></a>
-      <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
-  </div>
-  <div class="sidebar-scroll">
-      <div class="user-account">
-          <div class="user_div">
-              <img src="{% static 'assets/images/user.png' %}" class="user-photo" alt="User Profile Picture">
-          </div>
-          <div class="dropdown">
-              <span>{% trans "Welcome" %}</span>
-              <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{ user.get_full_name|default:user.email }}</strong></a>
-              <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                  <li><a href="{% url 'profile' %}"><i class="fa fa-user"></i>{% trans "My Profile" %}</a></li>
-                  <li><a href="javascript:void(0);"><i class="fa fa-envelope"></i>{% trans "Messages" %}</a></li>
-                  <li><a href="javascript:void(0);"><i class="fa fa-gear"></i>{% trans "Settings" %}</a></li>
-                  <li class="divider"></li>
-                  <li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i>{% trans "Logout" %}</a></li>
-              </ul>
-          </div>
-          {% if user.is_authenticated %}
-              <div class="dropdown mt-2">
-                  <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">{% trans "Switch Company" %}</a>
-                  <ul class="dropdown-menu">
-                      {% for company in user.userprofile.company.all %}
-                          <li><a href="{% url 'switch_company' company.id %}">{{ company.name }}</a></li>
-                      {% endfor %}
-                  </ul>
-              </div>
-          {% endif %}
-      </div>
-      <nav id="left-sidebar-nav" class="sidebar-nav">
-          <ul id="main-menu" class="metismenu animation-li-delay">
-              <li class="header">{% trans "Hospital" %}</li>
-              <li class="active"><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> <span>{% trans "Dashboard" %}</span></a></li>
-              <li>
-                  <a href="#Doctors" class="has-arrow"><i class="fa fa-user-md"></i><span>{% trans "Doctors" %}</span></a>
-                  <ul>
-                      <li><a href="javascript:void(0);">{% trans "All Doctors" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Add Doctors" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Doctors Profile" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Doctors Schedule" %}</a></li>
-                  </ul>
-              </li>
-              <li><a href="javascript:void(0);"><i class="fa fa-calendar"></i> <span>{% trans "Appointment" %}</span></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-th-list"></i> <span>{% trans "Todo List" %}</span></a></li>
-              <li>
-                  <a href="#Patients" class="has-arrow"><i class="fa fa-user-circle-o"></i><span>{% trans "Patients" %}</span></a>
-                  <ul>
-                      <li><a href="javascript:void(0);">{% trans "All Patient" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Add Patient" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Patient Profile" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Patient Invoices" %}</a></li>
-                  </ul>
-              </li>
-              <li>
-                  <a href="#Room" class="has-arrow"><i class="fa fa-thumbs-up"></i><span>{% trans "Room Allotment" %}</span></a>
-                  <ul>
-                      <li><a href="javascript:void(0);">{% trans "Alloted Rooms" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Add Allotment" %}</a></li>
-                  </ul>
-              </li>
-              <li><a href="javascript:void(0);"><i class="fa fa-table"></i><span>{% trans "Departments" %}</span></a></li>
-              <li>
-                  <a href="#Payments" class="has-arrow"><i class="fa fa-cc-paypal"></i><span>{% trans "Payments" %}</span></a>
-                  <ul>
-                      <li><a href="javascript:void(0);">{% trans "Payments" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Add Payments" %}</a></li>
-                      <li><a href="javascript:void(0);">{% trans "Invoice" %}</a></li>
-                  </ul>
-              </li>
-              <li class="header">{% trans "Admin" %}</li>
-              <li><a href="javascript:void(0);"><i class="fa fa-envelope"></i> <span>{% trans "Email" %}</span> <span class="badge badge-default mr-0">12</span></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-comments"></i> <span>{% trans "Chat" %}</span></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-users"></i><span>{% trans "Our Staffs" %}</span></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-address-book"></i> <span>{% trans "Contacts" %}</span></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-folder"></i> <span>{% trans "File Manager" %}</span></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-map-marker"></i><span>{% trans "Our Centres" %}</span></a></li>
-              <li class="header">{% trans "Social" %}</li>
-              <li><a href="javascript:void(0);"><i class="fa fa-globe"></i> <span>{% trans "Blog" %}</span></a></li>
-              <li><a href="javascript:void(0);"><i class="fa fa-share-alt-square"></i> <span>{% trans "Social" %}</span></a></li>
-              <li class="extra_widget">
-                  <div class="form-group">
-                      <label class="d-block">{% trans "Traffic this Month" %} <span class="float-right">77%</span></label>
-                      <div class="progress progress-xxs">
-                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
-                      </div>
-                  </div>
-                  <div class="form-group">
-                      <label class="d-block">{% trans "Server Load" %} <span class="float-right">50%</span></label>
-                      <div class="progress progress-xxs">
-                          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
-                      </div>
-                  </div>
-              </li>
-          </ul>
-      </nav>
-  </div>
+    <a href="javascript:void(0);" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
+    <div class="navbar-brand">
+        <a href="{% url 'dashboard' %}"><img src="{% static 'assets/images/icon.svg' %}" alt="Mooli Logo" class="img-fluid logo"><span>{% trans "Mooli-Hospital" %}</span></a>
+        <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
+    </div>
+    <div class="sidebar-scroll">
+        <div class="user-account">
+            <div class="user_div">
+                <img src="{% static 'assets/images/user.png' %}" class="user-photo" alt="User Profile Picture">
+            </div>
+            <div class="dropdown">
+                <span>{% trans "Welcome" %}</span>
+                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>{{ user.first_name|default:user.email }}</strong></a>
+                <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
+                    <li><a href="javascript:void(0);"><i class="fa fa-user"></i>{% trans "My Profile" %}</a></li>
+                    <li><a href="javascript:void(0);"><i class="fa fa-envelope"></i>{% trans "Messages" %}</a></li>
+                    <li><a href="javascript:void(0);"><i class="fa fa-gear"></i>{% trans "Settings" %}</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url 'logout' %}"><i class="fa fa-power-off"></i>{% trans "Logout" %}</a></li>
+                </ul>
+            </div>
+            {% if user.is_authenticated %}
+                <div class="dropdown mt-2">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">{% trans "Switch Company" %}</a>
+                    <ul class="dropdown-menu">
+                        {% for company in user.userprofile.companies.all %}
+                            <li class="{% if company == user.userprofile.current_company %}active{% endif %}"><a href="{% url 'switch_company' company.id %}">{{ company.name }}</a></li>
+                        {% empty %}
+                            <li><a href="javascript:void(0);">{% trans "No companies available" %}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="dropdown mt-2">
+                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">{% trans "Language" %}</a>
+                    <ul class="dropdown-menu">
+                        {% get_current_language as CURRENT_LANG %}
+                        <li class="{% if user.userprofile.default_language == 'en' %}active{% endif %}">
+                            <a href="{% url 'set_language' %}?lang=en&next={{ request.path }}">
+                                <img src="{% static 'assets/images/flag/us.svg' %}" alt="US English" class="flag-icon"> 
+                                {% trans "English" %}
+                            </a>
+                        </li>
+                        <li class="{% if user.userprofile.default_language == 'fr' %}active{% endif %}">
+                            <a href="{% url 'set_language' %}?lang=fr&next={{ request.path }}">
+                                <img src="{% static 'assets/images/flag/france.svg' %}" alt="French" class="flag-icon"> 
+                                {% trans "French" %}
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+        <nav id="left-sidebar-nav" class="sidebar-nav">
+            <ul id="main-menu" class="metismenu animation-li-delay">
+                <li class="header">{% trans "Hospital" %}</li>
+                <li class="active"><a href="{% url 'dashboard' %}"><i class="fa fa-dashboard"></i> <span>{% trans "Dashboard" %}</span></a></li>
+                <li>
+                    <a href="#Doctors" class="has-arrow"><i class="fa fa-user-md"></i><span>{% trans "Doctors" %}</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">{% trans "All Doctors" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Add Doctors" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Doctors Profile" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Doctors Schedule" %}</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0);"><i class="fa fa-calendar"></i> <span>{% trans "Appointment" %}</span></a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-th-list"></i> <span>{% trans "Todo List" %}</span></a></li>
+                <li>
+                    <a href="#Patients" class="has-arrow"><i class="fa fa-user-circle-o"></i><span>{% trans "Patients" %}</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">{% trans "All Patient" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Add Patient" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Patient Profile" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Patient Invoices" %}</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#Room" class="has-arrow"><i class="fa fa-thumbs-up"></i><span>{% trans "Room Allotment" %}</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">{% trans "Alloted Rooms" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Add Allotment" %}</a></li>
+                    </ul>
+                </li>
+                <li><a href="javascript:void(0);"><i class="fa fa-table"></i><span>{% trans "Departments" %}</span></a></li>
+                <li>
+                    <a href="#Payments" class="has-arrow"><i class="fa fa-cc-paypal"></i><span>{% trans "Payments" %}</span></a>
+                    <ul>
+                        <li><a href="javascript:void(0);">{% trans "Payments" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Add Payments" %}</a></li>
+                        <li><a href="javascript:void(0);">{% trans "Invoice" %}</a></li>
+                    </ul>
+                </li>
+                <li class="header">{% trans "Admin" %}</li>
+                <li><a href="javascript:void(0);"><i class="fa fa-envelope"></i> <span>{% trans "Email" %}</span> <span class="badge badge-default mr-0">12</span></a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-comments"></i> <span>{% trans "Chat" %}</span></a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-users"></i><span>{% trans "Our Staffs" %}</span></a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-address-book"></i> <span>{% trans "Contacts" %}</span></a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-folder"></i> <span>{% trans "File Manager" %}</span></a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-map-marker"></i><span>{% trans "Our Centres" %}</span></a></li>
+                <li class="header">{% trans "Social" %}</li>
+                <li><a href="javascript:void(0);"><i class="fa fa-globe"></i> <span>{% trans "Blog" %}</span></a></li>
+                <li><a href="javascript:void(0);"><i class="fa fa-share-alt-square"></i> <span>{% trans "Social" %}</span></a></li>
+                <li class="extra_widget">
+                    <div class="form-group">
+                        <label class="d-block">{% trans "Traffic this Month" %} <span class="float-right">77%</span></label>
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" style="width: 77%;"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="d-block">{% trans "Server Load" %} <span class="float-right">50%</span></label>
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </div>
+<style>
+    .flag-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+</style>
