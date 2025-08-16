@@ -1,0 +1,38 @@
+# Python/Django
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.sqlite3
+*.db
+*.log
+
+# Virtual environment
+env/
+ENV/
+
+# Django static and media
+/staticfiles/
+/media/
+
+# macOS
+.DS_Store
+
+# IDEs and editors
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Django migrations (optional, include if you want to track migrations)
+# mooli_app/migrations/*
+
+# Sensitive files
+*.env
+*.secret
+*.key
+
+# Keep locale and submission files
+!locale/
+!submission-lab1/
