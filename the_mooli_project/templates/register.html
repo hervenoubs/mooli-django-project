@@ -13,6 +13,19 @@
                 <p class="lead">{% trans "Create an account" %}</p>
             </div>
             <div class="body">
+                {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>{% trans "Error!" %}</strong> 
+                    {% if form.non_field_errors %}
+                        {{ form.non_field_errors }}
+                    {% else %}
+                        {% trans "Please correct the errors below." %}
+                    {% endif %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
                 <form class="form-auth-small" method="post" action="{% url 'register' %}">
                     {% csrf_token %}
                     <div class="row">
@@ -20,22 +33,42 @@
                             <div class="form-group c_form_group">
                                 <label>{% trans "First Name" %}</label>
                                 {{ form.first_name }}
+                                {% if form.first_name.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.first_name.errors }}
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group c_form_group">
                                 <label>{% trans "Last Name" %}</label>
                                 {{ form.last_name }}
+                                {% if form.last_name.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.last_name.errors }}
+                                    </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
                     <div class="form-group c_form_group">
                         <label>{% trans "Email" %}</label>
                         {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="form-group c_form_group">
                         <label>{% trans "Password" %}</label>
                         {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password.errors }}
+                            </div>
+                        {% endif %}
                     </div>
                     <button type="submit" class="btn btn-dark btn-lg btn-block">{% trans "REGISTER" %}</button>
                     <div class="bottom">

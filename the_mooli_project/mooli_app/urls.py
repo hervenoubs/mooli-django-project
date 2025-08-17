@@ -1,10 +1,11 @@
 from django.urls import path
 from . import views
-from django.contrib.auth.views import LoginView, LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+from .views import LoginView  # Import your custom view
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
-    path('login/', views.LoginView.as_view(), name='login'),
+    path('login/', LoginView.as_view(), name='login'),  # Using your custom view
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('register/', views.register, name='register'),
     path('forgot-password/', PasswordResetView.as_view(template_name='forgot_password.html'), name='password_reset'),

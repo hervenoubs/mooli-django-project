@@ -22,19 +22,36 @@ class LoginView(DjangoLoginView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
-        # Activate language from user profile
+        user = form.get_user()
+        
+        # Activate user's preferred language
         try:
-            profile = self.request.user.userprofile
-            translation.activate(profile.default_language)
-            self.request.session[settings.LANGUAGE_SESSION_KEY] = profile.default_language
+            profile = user.userprofile
+            language = profile.default_language
+            translation.activate(language)
+            self.request.session[settings.LANGUAGE_SESSION_KEY] = language
+            
+            # Redirect to language-prefixed version of the dashboard
+            redirect_url = f'/{language}/'  # Will redirect to /fr/
+            return redirect(redirect_url)
+            
         except UserProfile.DoesNotExist:
-            # Fallback for users without a profile (e.g., superuser)
+            # Fallback to default language
             translation.activate(settings.LANGUAGE_CODE)
             self.request.session[settings.LANGUAGE_SESSION_KEY] = settings.LANGUAGE_CODE
+        
         return response
 
 @login_required
 def dashboard(request):
+    # Ensure language is activated
+    if request.user.is_authenticated:
+        try:
+            language = request.user.userprofile.default_language
+            translation.activate(language)
+        except UserProfile.DoesNotExist:
+            pass
+    
     return render(request, 'index.html')
 
 def register(request):
@@ -107,32 +124,35 @@ def activate(request, uidb64, token):
     else:
         return render(request, 'activation_invalid.html')
 
-@login_required
 def set_language(request):
-    lang = request.GET.get('lang', 'en')
-    referer = request.META.get('HTTP_REFERER', '/')
-    
-    # Extract just the path from the referer URL
-    parsed_referer = urlparse(referer)
-    next_url = parsed_referer.path  # This gives just "/" or "/some/path/"
+    lang = request.GET.get('lang', settings.LANGUAGE_CODE)
+    next_url = request.GET.get('next', '/')
     
     if lang in dict(settings.LANGUAGES):
-        translation_activate(lang)
+        # Update session
         request.session[settings.LANGUAGE_SESSION_KEY] = lang
+        translation.activate(lang)
         
-        if request.user.is_authenticated:
+        # Update user profile if authenticated
+        if hasattr(request, 'user') and request.user.is_authenticated:
             try:
                 profile = request.user.userprofile
                 profile.default_language = lang
                 profile.save()
-            except UserProfile.DoesNotExist:
+            except Exception:
                 pass
         
-        # Handle URL prefixing
-        if settings.USE_I18N_URL_PREFIXES:
-            # Remove any existing language prefix
-            path_without_lang = next_url[3:] if len(next_url) > 3 and next_url[3] == '/' else next_url
-            next_url = f'/{lang}{path_without_lang}'
+        # Handle the redirect URL
+        if next_url == '/':
+            next_url = f'/{lang}/'
+        else:
+            # Ensure the URL has the correct language prefix
+            parts = next_url.split('/')
+            if len(parts) > 1 and parts[1] in dict(settings.LANGUAGES):
+                parts[1] = lang
+                next_url = '/'.join(parts)
+            else:
+                next_url = f'/{lang}{next_url}'
     
     return redirect(next_url)
 

@@ -13,15 +13,38 @@
                 <p class="lead">{% trans "Login to your account" %}</p>
             </div>
             <div class="body">
+                {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error!</strong> 
+                    {% if form.non_field_errors %}
+                        {{ form.non_field_errors }}
+                    {% else %}
+                        Please correct the errors below.
+                    {% endif %}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
                 <form class="form-auth-small" method="post" action="{% url 'login' %}">
                     {% csrf_token %}
                     <div class="form-group c_form_group">
                         <label>{% trans "Email" %}</label>
                         {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.username.errors }}
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="form-group c_form_group">
                         <label>{% trans "Password" %}</label>
                         {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.password.errors }}
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="form-group clearfix">
                         <label class="fancy-checkbox element-left">

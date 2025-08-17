@@ -4,7 +4,7 @@ from django.db import models
 class CustomUser(AbstractUser):
     email = models.EmailField(unique=True)
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']  # Add first_name and last_name as required
+    REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
 class Company(models.Model):
     name = models.CharField(max_length=100)

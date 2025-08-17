@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'the_mooli_project.middleware.UserLanguageMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,6 +82,8 @@ WSGI_APPLICATION = 'the_mooli_project.wsgi.application'
 AUTH_USER_MODEL = 'mooli_app.CustomUser'
 
 LOGIN_URL = 'login'
+
+LOGIN_REDIRECT_URL = 'dashboard'
 
 
 # Database
@@ -145,6 +148,7 @@ LOCALE_PATHS = [BASE_DIR / "locale"]
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+USE_L10N = True
 
 USE_TZ = True
 
