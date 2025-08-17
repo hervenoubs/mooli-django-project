@@ -35,4 +35,4 @@ ENV/
 
 # Keep locale and submission files
 !locale/
-!submission-lab1/
+!submission-lab1/.DS_Store
