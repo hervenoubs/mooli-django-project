@@ -8,7 +8,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.utils import timezone
 from django.core.mail import send_mail
-from django.urls import reverse, translate_url
+from django.urls import reverse
 from .models import CustomUser, UserProfile
 from django.contrib.auth.hashers import make_password
 from .forms import RegistrationForm, CustomLoginForm

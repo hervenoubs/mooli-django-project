@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from dotenv import load_dotenv
 import os
 from pathlib import Path
+import re
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,8 +32,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'pulling-career-routine-agree.trycloudflare.com',
+]
 
 # Application definition
 
@@ -44,12 +48,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mooli_app',
+    'ai_chatbot',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'the_mooli_project.middleware.UserLanguageMiddleware',
+    'the_mooli_project.middleware.LogRequestMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,6 +91,35 @@ LOGIN_URL = 'login'
 
 LOGIN_REDIRECT_URL = 'dashboard'
 
+# Celery Configuration
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis broker for task queue
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # Store task results
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Manila'
+
+# Slack and Teams Credentials (replace with real values after setup)
+SLACK_BOT_TOKEN = os.getenv('SLACK_BOT_TOKEN')
+SLACK_APP_TOKEN = os.getenv('SLACK_APP_TOKEN')
+SLACK_SIGNING_SECRET = os.getenv('SLACK_SIGNING_SECRET')
+TEAMS_APP_ID = os.getenv('TEAMS_APP_ID')
+TEAMS_APP_PASSWORD = os.getenv('TEAMS_APP_PASSWORD')
+
+# OPENAI Key
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# AWS Credentials
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_REGION_NAME = os.getenv('AWS_REGION_NAME')
+BEDROCK_MODEL_ID = 'anthropic.claude-3-sonnet-20240229-v1:0'
+
+# Disable auth for local development
+BOT_AUTH_DISABLED = True
+
+# Use localhost service URL for Emulator
+BOT_SERVICE_URL = "http://localhost:3978"
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -133,6 +168,37 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Logging Configuration
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',
+            'formatter': 'verbose',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
+}
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -145,7 +211,7 @@ LANGUAGES = [
 ]
 LOCALE_PATHS = [BASE_DIR / "locale"]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Manila'
 
 USE_I18N = True
 USE_L10N = True
@@ -171,7 +237,7 @@ STATICFILES_DIRS = [
 
 # Media files (user uploads)
 MEDIA_URL = '/media/'
-# MEDIA_URL = 'https://taako-jewelry.com/media/'
+# MEDIA_URL = 'https://example.com/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 TEMPLATES = [
