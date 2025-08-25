@@ -1,5 +1,8 @@
 from django.utils import translation
 from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 class UserLanguageMiddleware:
     def __init__(self, get_response):
@@ -26,3 +29,12 @@ class UserLanguageMiddleware:
         
         response = self.get_response(request)
         return response
+
+class LogRequestMiddleware:
+    def __init__(self, get_response):
+        self.get_response = get_response
+
+    def __call__(self, request):
+        if request.method == "POST" and request.path == "/":
+            logger.warning(f"Unexpected POST to / from {request.META.get('REMOTE_ADDR')} with headers: {dict(request.headers)}")
+        return self.get_response(request)
