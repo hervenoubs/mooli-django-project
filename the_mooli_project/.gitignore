@@ -8,10 +8,13 @@ __pycache__/
 *.db
 *.log
 *.rdb
+.python-version
 
 # Virtual environment
 env/
 ENV/
+new_env/
+NEW_ENV/
 
 # Django static and media
 /staticfiles/
@@ -19,12 +22,15 @@ ENV/
 
 # macOS
 .DS_Store
+Thumbs.db
 
 # IDEs and editors
 .idea/
 .vscode/
 *.sublime-project
 *.sublime-workspace
+*.swp
+*.swo
 
 # Django migrations (optional, include if you want to track migrations)
 # mooli_app/migrations/*
@@ -37,3 +43,4 @@ ENV/
 # Keep locale and submission files
 !locale/
 !submission-lab1/.DS_Store
+!submission-lab2/.DS_Store
