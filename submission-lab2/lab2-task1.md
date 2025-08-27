@@ -15,10 +15,8 @@
 - CSRF 403 on / ignored (unrelated probe).
 - Tested successfully in Slack (DMs to @MooliChatbot) and Teams (Bot Framework Emulator).
 
-## Screenshots
-- Slack chat screenshot: 
-- Teams Web Chat screenshot: 
-- Terminal screenshot: 
+## Screenshot
+- https://drive.google.com/file/d/1r4nOlRHOis74Ic7VS3QWa276jzZp4cBK/view?usp=sharing 
 
 ## Code Repo
 - Repository: 
