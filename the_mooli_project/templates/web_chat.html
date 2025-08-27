@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans "Mooli Chatbot" %}{% endblock %}
+
+{% block content %}
+<div class="row clearfix">
+    <div class="col-12">
+        <nav class="navbar navbar-expand-lg page_menu">
+            <a class="navbar-brand" href="#">M.</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="{% trans 'Toggle navigation' %}">
+                <i class="fa fa-bars text-muted"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">{% trans "Analytics" %}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="javascript:void(0);">{% trans "Covid 19 Dashboard" %}</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="{% url 'web_chat' %}">{% trans "Chatbot" %}</a></li>
+                </ul>
+                <div class="ml-auto">
+                    <a href="javascript:void(0);" class="btn btn-default">{% trans "ToDo" %}</a>
+                    <a href="javascript:void(0);" class="btn btn-default">{% trans "Settings" %}</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="body">
+                <div class="section_title">
+                    <div class="mr-3">
+                        <h3>{% trans "Mooli Chatbot" %}</h3>
+                        <small>{% trans "Ask questions about documents or upload files for processing." %}</small>
+                    </div>
+                </div>
+                <div class="chat-box mt-3" id="chatBox" style="height: 400px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+                    <div class="message bot-message">
+                        {% trans "Welcome to Mooli Chatbot, " %}{{ user.first_name }}! {% trans "Type a message or upload a PDF below." %}
+                    </div>
+                </div>
+                <form id="chatForm" class="mt-3">
+                    <div class="input-group">
+                        <input type="text" id="messageInput" class="form-control" placeholder="{% trans 'Type your message (e.g., Query PythonAI.pdf about AI)' %}" required>
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default">{% trans "Send" %}</button>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <input type="file" id="fileInput" accept=".pdf" class="form-control-file">
+                        <button type="button" id="uploadButton" class="btn btn-default mt-2">{% trans "Upload File" %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .chat-box { background: #fff; }
+    .message { margin-bottom: 10px; }
+    .user-message { text-align: right; }
+    .bot-message { text-align: left; }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        const chatBox = $('#chatBox');
+        const messageInput = $('#messageInput');
+        const fileInput = $('#fileInput');
+
+        // Function to display a message in the chat box
+        function displayMessage(text, sender) {
+            const messageClass = sender === 'Herve' ? 'user-message' : 'bot-message';
+            const messageHtml = `<div class="message ${messageClass}"><b>${sender}:</b> ${text}</div>`;
+            chatBox.append(messageHtml);
+            chatBox.scrollTop(chatBox.prop("scrollHeight"));
+        }
+
+        // Get the CSRF token from the page
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.startsWith(name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        // Function to handle polling
+        function pollForStatus(taskId) {
+            const pollInterval = setInterval(function() {
+                $.ajax({
+                    url: '{% url "get_task_status" %}',
+                    type: 'GET',
+                    data: { 'task_id': taskId },
+                    success: function(statusResponse) {
+                        if (statusResponse.status === 'SUCCESS') {
+                            clearInterval(pollInterval);
+                            displayMessage("Processing complete: " + statusResponse.result, 'bot');
+                        } else if (statusResponse.status === 'FAILURE') {
+                            clearInterval(pollInterval);
+                            displayMessage("An error occurred during file processing.", 'bot');
+                        }
+                    }
+                });
+            }, 3000); // Poll every 3 seconds
+        }
+
+        // Handle text message submission
+        $('#chatForm').on('submit', function(e) {
+            e.preventDefault();
+            const message = messageInput.val();
+            if (message.trim() === '') return;
+
+            displayMessage(message, 'Herve');
+            messageInput.val('');
+            displayMessage("&#128075; Got it! Working on that now...", 'bot');
+
+            // Send message to Django backend
+            $.ajax({
+                url: '{% url "process_chat_message" %}',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    'message': message,
+                }),
+                headers: {
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                success: function(response) {
+                    // This success function is for regular chat messages
+                    // It does NOT start polling.
+                    displayMessage(response.message, 'bot');
+                },
+                error: function(xhr) {
+                    displayMessage("Sorry, an error occurred.", 'bot');
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+
+        // Handle file upload
+        $('#uploadButton').on('click', function() {
+            const file = fileInput.prop('files')[0];
+            if (!file) {
+                alert('Please select a file to upload.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+            formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+            displayMessage("File upload initiated. Please wait for processing...", 'Herve');
+
+            // Send file to backend
+            $.ajax({
+                url: '{% url "process_file_upload" %}',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    // This success function is for file uploads
+                    displayMessage(response.message, 'bot');
+                    // Check if the response contains a task_id and if so, start polling
+                    if (response.task_id) {
+                        pollForStatus(response.task_id);
+                    }
+                },
+                error: function(xhr) {
+                    displayMessage("Sorry, an error occurred during file upload.", 'bot');
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}
