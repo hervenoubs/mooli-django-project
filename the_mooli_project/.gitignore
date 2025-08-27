@@ -42,5 +42,7 @@ Thumbs.db
 
 # Keep locale and submission files
 !locale/
+temp_uploads/
+faiss_index/
 !submission-lab1/.DS_Store
 !submission-lab2/.DS_Store

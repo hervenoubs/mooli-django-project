@@ -30,6 +30,7 @@ urlpatterns = [
 # URLs that should have language prefixes
 urlpatterns += i18n_patterns(
     path('', include('mooli_app.urls')),  # The app's URLs will now have language prefixes
+    path('ai_chatbot/', include('ai_chatbot.urls')),
     prefix_default_language=False  # This is optional: /en/ prefix won't be added for default language
 )
 

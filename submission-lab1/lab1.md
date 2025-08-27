@@ -28,8 +28,3 @@ MySQL backend with phpMyAdmin.
 Fixed loader issue, read-only form, separated forms into forms.py.
 
 Screenshots
-
-Dashboard: [Insert screenshot]
-Login: [Insert screenshot]
-Register: [Insert screenshot]
-Forgot Password: [Insert screenshot]

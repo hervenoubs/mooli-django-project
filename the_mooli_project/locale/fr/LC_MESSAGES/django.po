@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Django\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-08-16 17:13+0000\n"
+"POT-Creation-Date: 2025-08-25 16:27+0800\n"
 "PO-Revision-Date: 2025-08-17 14:30+0200\n"
 "Last-Translator: Your Name <your.email@example.com>\n"
 "Language-Team: French <fr@translation.example.com>\n"
@@ -33,7 +33,7 @@ msgid "The activation link is invalid or has expired. Please register again."
 msgstr ""
 "Le lien d'activation est invalide ou a expiré. Veuillez vous réinscrire."
 
-#: templates/activation_invalid.html:17 templates/login.html:35
+#: templates/activation_invalid.html:17 templates/login.html:58
 msgid "Register"
 msgstr "S'inscrire"
 
@@ -49,20 +49,28 @@ msgstr "Mot de passe oublié - Mooli"
 msgid "Reset your password"
 msgstr "Réinitialiser votre mot de passe"
 
-#: templates/forgot_password.html:19 templates/login.html:19
-#: templates/partials/sidebar.html:86 templates/register.html:33
+#: templates/forgot_password.html:18 templates/register.html:18
+msgid "Error!"
+msgstr ""
+
+#: templates/forgot_password.html:22
+msgid "Please correct the error below."
+msgstr ""
+
+#: templates/forgot_password.html:43 templates/login.html:32
+#: templates/register.html:56
 msgid "Email"
 msgstr "E-mail"
 
-#: templates/forgot_password.html:22
+#: templates/forgot_password.html:51
 msgid "SUBMIT"
 msgstr "SOUMETTRE"
 
-#: templates/forgot_password.html:24
+#: templates/forgot_password.html:53
 msgid "Remember your password?"
 msgstr "Vous souvenez-vous de votre mot de passe ?"
 
-#: templates/forgot_password.html:24 templates/register.html:42
+#: templates/forgot_password.html:53 templates/register.html:75
 msgid "Login"
 msgstr "Connexion"
 
@@ -100,23 +108,24 @@ msgstr "Gains"
 msgid "Revenue"
 msgstr "Revenus"
 
-#: templates/index.html:38
+#: templates/index.html:38 templates/web_chat.html:11
 msgid "Toggle navigation"
 msgstr "Basculer la navigation"
 
-#: templates/index.html:43
+#: templates/index.html:43 templates/web_chat.html:16
 msgid "Analytics"
 msgstr "Analytique"
 
-#: templates/index.html:44
+#: templates/index.html:44 templates/web_chat.html:17
 msgid "Covid 19 Dashboard"
 msgstr "Tableau de bord COVID-19"
 
-#: templates/index.html:47
+#: templates/index.html:47 templates/web_chat.html:21
 msgid "ToDo"
 msgstr "À faire"
 
 #: templates/index.html:48 templates/partials/sidebar.html:20
+#: templates/web_chat.html:22
 msgid "Settings"
 msgstr "Paramètres"
 
@@ -198,23 +207,23 @@ msgstr "Connexion - Mooli"
 msgid "Login to your account"
 msgstr "Connectez-vous à votre compte"
 
-#: templates/login.html:23 templates/register.html:37
+#: templates/login.html:41 templates/register.html:65
 msgid "Password"
 msgstr "Mot de passe"
 
-#: templates/login.html:29
+#: templates/login.html:52
 msgid "Remember me"
 msgstr "Se souvenir de moi"
 
-#: templates/login.html:32
+#: templates/login.html:55
 msgid "LOGIN"
 msgstr "SE CONNECTER"
 
-#: templates/login.html:34
+#: templates/login.html:57
 msgid "Forgot password?"
 msgstr "Mot de passe oublié ?"
 
-#: templates/login.html:35
+#: templates/login.html:58
 msgid "Don't have an account?"
 msgstr "Vous n'avez pas de compte ?"
 
@@ -234,7 +243,7 @@ msgstr "Créer"
 msgid "User"
 msgstr "Utilisateur"
 
-#: templates/partials/navbar.html:24 templates/partials/sidebar.html:82
+#: templates/partials/navbar.html:24
 msgid "Invoice"
 msgstr "Facture"
 
@@ -346,7 +355,7 @@ msgstr "Cela donnera une finition élégante à votre site"
 msgid "US English"
 msgstr "Anglais américain"
 
-#: templates/partials/navbar.html:58 templates/partials/sidebar.html:40
+#: templates/partials/navbar.html:58 templates/partials/sidebar.html:49
 msgid "French"
 msgstr "Français"
 
@@ -440,129 +449,21 @@ msgstr "Aucune entreprise disponible"
 msgid "Language"
 msgstr "Langue"
 
-#: templates/partials/sidebar.html:39
+#: templates/partials/sidebar.html:43
 msgid "English"
 msgstr "Anglais"
 
-#: templates/partials/sidebar.html:47
+#: templates/partials/sidebar.html:58
 msgid "Hospital"
 msgstr "Hôpital"
 
-#: templates/partials/sidebar.html:48
+#: templates/partials/sidebar.html:59
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: templates/partials/sidebar.html:50
-msgid "Doctors"
-msgstr "Médecins"
-
-#: templates/partials/sidebar.html:52
-msgid "All Doctors"
-msgstr "Tous les médecins"
-
-#: templates/partials/sidebar.html:53
-msgid "Add Doctors"
-msgstr "Ajouter des médecins"
-
-#: templates/partials/sidebar.html:54
-msgid "Doctors Profile"
-msgstr "Profil des médecins"
-
-#: templates/partials/sidebar.html:55
-msgid "Doctors Schedule"
-msgstr "Emploi du temps des médecins"
-
-#: templates/partials/sidebar.html:58
-msgid "Appointment"
-msgstr "Rendez-vous"
-
-#: templates/partials/sidebar.html:59
-msgid "Todo List"
-msgstr "Liste de tâches"
-
-#: templates/partials/sidebar.html:61
-msgid "Patients"
-msgstr "Patients"
-
-#: templates/partials/sidebar.html:63
-msgid "All Patient"
-msgstr "Tous les patients"
-
-#: templates/partials/sidebar.html:64
-msgid "Add Patient"
-msgstr "Ajouter un patient"
-
-#: templates/partials/sidebar.html:65
-msgid "Patient Profile"
-msgstr "Profil du patient"
-
-#: templates/partials/sidebar.html:66
-msgid "Patient Invoices"
-msgstr "Factures des patients"
-
-#: templates/partials/sidebar.html:70
-msgid "Room Allotment"
-msgstr "Attribution des chambres"
-
-#: templates/partials/sidebar.html:72
-msgid "Alloted Rooms"
-msgstr "Chambres attribuées"
-
-#: templates/partials/sidebar.html:73
-msgid "Add Allotment"
-msgstr "Ajouter une attribution"
-
-#: templates/partials/sidebar.html:76
-msgid "Departments"
-msgstr "Départements"
-
-#: templates/partials/sidebar.html:78 templates/partials/sidebar.html:80
-msgid "Payments"
-msgstr "Paiements"
-
-#: templates/partials/sidebar.html:81
-msgid "Add Payments"
-msgstr "Ajouter des paiements"
-
-#: templates/partials/sidebar.html:85
-msgid "Admin"
-msgstr "Administration"
-
-#: templates/partials/sidebar.html:87
+#: templates/partials/sidebar.html:60
 msgid "Chat"
 msgstr "Chat"
-
-#: templates/partials/sidebar.html:88
-msgid "Our Staffs"
-msgstr "Notre personnel"
-
-#: templates/partials/sidebar.html:89
-msgid "Contacts"
-msgstr "Contacts"
-
-#: templates/partials/sidebar.html:90
-msgid "File Manager"
-msgstr "Gestionnaire de fichiers"
-
-#: templates/partials/sidebar.html:91
-msgid "Our Centres"
-msgstr "Nos centres"
-
-#: templates/partials/sidebar.html:92 templates/partials/sidebar.html:94
-msgid "Social"
-msgstr "Réseaux sociaux"
-
-#: templates/partials/sidebar.html:93
-msgid "Blog"
-msgstr "Blog"
-
-#: templates/partials/sidebar.html:97
-msgid "Traffic this Month"
-msgstr "Trafic ce mois-ci"
-
-#: templates/partials/sidebar.html:103
-msgid "Server Load"
-msgstr "Charge du serveur"
 
 #: templates/password_reset_complete.html:4
 msgid "Password Reset Complete - Mooli"
@@ -630,21 +531,160 @@ msgstr "S'inscrire - Mooli"
 msgid "Create an account"
 msgstr "Créer un compte"
 
-#: templates/register.html:21
+#: templates/register.html:22
+msgid "Please correct the errors below."
+msgstr ""
+
+#: templates/register.html:34
 msgid "First Name"
 msgstr "Prénom"
 
-#: templates/register.html:27
+#: templates/register.html:45
 msgid "Last Name"
 msgstr "Nom"
 
-#: templates/register.html:40
+#: templates/register.html:73
 msgid "REGISTER"
 msgstr "S'INSCRIRE"
 
-#: templates/register.html:42
+#: templates/register.html:75
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte ?"
+
+#: templates/web_chat.html:4 templates/web_chat.html:32
+msgid "Mooli Chatbot"
+msgstr "Chatbot Mooli"
+
+#: templates/web_chat.html:18
+msgid "Chatbot"
+msgstr "Chatbot"
+
+#: templates/web_chat.html:33
+msgid "Ask questions about documents or upload files for processing."
+msgstr ""
+"Posez des questions sur les documents ou téléchargez des fichiers pour "
+"traitement."
+
+#: templates/web_chat.html:38
+msgid "Welcome to Mooli Chatbot, "
+msgstr "Bienvenue sur le Chatbot Mooli, "
+
+#: templates/web_chat.html:38
+msgid "Type a message or upload a PDF below."
+msgstr "Tapez un message ou téléchargez un PDF ci-dessous."
+
+#: templates/web_chat.html:43
+msgid "Type your message (e.g., Query PythonAI.pdf about AI)"
+msgstr "Tapez votre message (par ex., interroger PythonAI.pdf sur l'IA)"
+
+#: templates/web_chat.html:45
+msgid "Send"
+msgstr "Envoyer"
+
+#: templates/web_chat.html:50
+msgid "Upload File"
+msgstr "Télécharger un fichier"
+
+#: templates/web_chat.html:74 templates/web_chat.html:100
+msgid "You"
+msgstr "Vous"
+
+#: templates/web_chat.html:84 templates/web_chat.html:111
+msgid "Bot"
+msgstr "Bot"
+
+#: templates/web_chat.html:84
+msgid "Message processed. Response will appear soon."
+msgstr "Message traité. La réponse apparaîtra bientôt."
+
+#: templates/web_chat.html:100
+msgid "Uploading"
+msgstr "Téléchargement"
+
+#: templates/web_chat.html:111
+msgid "File uploaded and processed. Response will appear soon."
+msgstr "Fichier téléchargé et traité. La réponse apparaîtra bientôt."
+
+#~ msgid "Doctors"
+#~ msgstr "Médecins"
+
+#~ msgid "All Doctors"
+#~ msgstr "Tous les médecins"
+
+#~ msgid "Add Doctors"
+#~ msgstr "Ajouter des médecins"
+
+#~ msgid "Doctors Profile"
+#~ msgstr "Profil des médecins"
+
+#~ msgid "Doctors Schedule"
+#~ msgstr "Emploi du temps des médecins"
+
+#~ msgid "Appointment"
+#~ msgstr "Rendez-vous"
+
+#~ msgid "Todo List"
+#~ msgstr "Liste de tâches"
+
+#~ msgid "Patients"
+#~ msgstr "Patients"
+
+#~ msgid "All Patient"
+#~ msgstr "Tous les patients"
+
+#~ msgid "Add Patient"
+#~ msgstr "Ajouter un patient"
+
+#~ msgid "Patient Profile"
+#~ msgstr "Profil du patient"
+
+#~ msgid "Patient Invoices"
+#~ msgstr "Factures des patients"
+
+#~ msgid "Room Allotment"
+#~ msgstr "Attribution des chambres"
+
+#~ msgid "Alloted Rooms"
+#~ msgstr "Chambres attribuées"
+
+#~ msgid "Add Allotment"
+#~ msgstr "Ajouter une attribution"
+
+#~ msgid "Departments"
+#~ msgstr "Départements"
+
+#~ msgid "Payments"
+#~ msgstr "Paiements"
+
+#~ msgid "Add Payments"
+#~ msgstr "Ajouter des paiements"
+
+#~ msgid "Admin"
+#~ msgstr "Administration"
+
+#~ msgid "Our Staffs"
+#~ msgstr "Notre personnel"
+
+#~ msgid "Contacts"
+#~ msgstr "Contacts"
+
+#~ msgid "File Manager"
+#~ msgstr "Gestionnaire de fichiers"
+
+#~ msgid "Our Centres"
+#~ msgstr "Nos centres"
+
+#~ msgid "Social"
+#~ msgstr "Réseaux sociaux"
+
+#~ msgid "Blog"
+#~ msgstr "Blog"
+
+#~ msgid "Traffic this Month"
+#~ msgstr "Trafic ce mois-ci"
+
+#~ msgid "Server Load"
+#~ msgstr "Charge du serveur"
 
 #~ msgid "Mooli Dashboard"
 #~ msgstr "Tableau de bord Mooli"

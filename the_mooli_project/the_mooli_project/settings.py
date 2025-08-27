@@ -35,12 +35,23 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    'pulling-career-routine-agree.trycloudflare.com',
+    'whereas-circular-basin-bl.trycloudflare.com',
 ]
 
 # Application definition
 
+# ASGI_APPLICATION = 'the_mooli_project.asgi.application'
+# CHANNEL_LAYERS = {
+#     'default': {
+#         'BACKEND': 'channels_redis.core.RedisChannelLayer',
+#         'CONFIG': {
+#             'hosts': [('127.0.0.1', 6379)],
+#         },
+#     },
+# }
+
 INSTALLED_APPS = [
+    # 'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mooli_app',
     'ai_chatbot',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -113,11 +125,11 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
 AWS_REGION_NAME = os.getenv('AWS_REGION_NAME')
-BEDROCK_MODEL_ID = 'anthropic.claude-3-sonnet-20240229-v1:0'
+BEDROCK_MODEL_ID = os.getenv('BEDROCK_MODEL_ID')
+S3_BUCKET_NAME = os.getenv('S3_BUCKET_NAME')
 
 # Disable auth for local development
 BOT_AUTH_DISABLED = True
-
 # Use localhost service URL for Emulator
 BOT_SERVICE_URL = "http://localhost:3978"
 
