@@ -22,8 +22,6 @@ bedrock_runtime = boto3.client('bedrock-runtime',
 
 def ingest_from_s3(bucket_name, file_key):
     # This is your existing function from Task 2
-    # No changes are needed here
-    # ... (paste the full code for this function)
     s3_client = boto3.client('s3')
     try:
         logger.info(f"Downloading {file_key} from S3 bucket {bucket_name}...")
