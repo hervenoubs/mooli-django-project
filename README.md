@@ -1,6 +1,8 @@
 # Mooli Django Project  
 A Django-based admin dashboard built with the Mooli Bootstrap 4x template, featuring email-based authentication, multilingual support, and company profile switching.  
 
+<img width="1424" height="774" alt="Screenshot 2025-08-27 at 1 22 09 PM" src="https://github.com/user-attachments/assets/738a54cb-bdd2-4db7-928f-38c4c22e19e0" />
+
 ## Features  
 
 Pages: Dashboard, Login, Register, Forgot Password.  
