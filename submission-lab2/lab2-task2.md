@@ -129,7 +129,7 @@ The key components of this pipeline are:
   using AWS Bedrock and LangChain.
 
 ## Screenshots
-- Screenshot: 
+- https://drive.google.com/file/d/1A_DRvGutLv7ikyCWuywy9LROSHK4UiER/view?usp=sharing
 
 ## Code Repo
 - Repository: 
