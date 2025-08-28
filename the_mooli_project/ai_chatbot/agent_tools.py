@@ -167,7 +167,7 @@ Thought:{agent_scratchpad}
 
 # Create the agent executor. This is the main runnable object.
 agent = create_react_agent(
-    tools=agent_tools, # The list of tools from Part 1
+    tools=agent_tools,
     llm=llm,
     prompt=prompt_template,
 )
