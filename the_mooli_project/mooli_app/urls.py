@@ -5,7 +5,7 @@ from .views import LoginView  # Import custom view
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
-    path('login/', LoginView.as_view(), name='login'),  # Using your custom view
+    path('login/', LoginView.as_view(), name='login'),  # Using custom view
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('register/', views.register, name='register'),
     path('forgot-password/', PasswordResetView.as_view(template_name='forgot_password.html'), name='password_reset'),
