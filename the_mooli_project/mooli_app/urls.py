@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
-from .views import LoginView  # Import your custom view
+from .views import LoginView  # Import custom view
 
 urlpatterns = [
     path('', views.dashboard, name='dashboard'),
