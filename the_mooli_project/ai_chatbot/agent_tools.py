@@ -52,9 +52,6 @@ def ingest_from_s3(bucket_name, file_key):
 
 
 def create_faiss_index(documents, index_name="faiss_index"):
-    # This is your existing function from Task 2
-    # No changes are needed here
-    # ... (paste the full code for this function)
     if not documents:
         logger.error("No documents to process. Aborting index creation.")
         return None
