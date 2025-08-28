@@ -67,7 +67,7 @@ def create_faiss_index(documents, index_name="faiss_index"):
 def perform_qa_with_rag(query):
     """
     Performs a Q&A using the RAG pipeline.
-    This function is slightly modified to take only the query as input,
+    This function takes only the query as input,
     as required by the Tool class. It will load the index itself.
     """
     index_name = "faiss_index"
