@@ -15,6 +15,8 @@ from .forms import RegistrationForm, CustomLoginForm
 from django.contrib.auth.views import LoginView as DjangoLoginView
 from django.utils.translation import activate as translation_activate, get_language_from_path
 from urllib.parse import urlparse
+from django.db import IntegrityError
+from django.contrib import messages 
 
 class LoginView(DjangoLoginView):
     template_name = 'login.html'
@@ -64,42 +66,58 @@ def register(request):
             password = form.cleaned_data['password']
             username = email.split('@')[0]  # Username from email
 
-            user = CustomUser.objects.create(
-                username=username,
-                email=email,
-                first_name=first_name,
-                last_name=last_name,
-                is_active=False
-            )
-            user.password = make_password(password)
-            user.save()
+            try:
+                # Check if username already exists before creating
+                if CustomUser.objects.filter(username=username).exists():
+                    messages.error(request, "This username is already taken. Please use a different email.")
+                    return render(request, 'register.html', {'form': form})
+                
+                user = CustomUser.objects.create(
+                    username=username,
+                    email=email,
+                    first_name=first_name,
+                    last_name=last_name,
+                    is_active=False
+                )
+                user.password = make_password(password)
+                user.save()
 
-            profile = UserProfile.objects.create(
-                user=user,
-                default_language='en'
-            )
+                profile = UserProfile.objects.create(
+                    user=user,
+                    default_language='en'
+                )
 
-            # Generate activation token
-            token_generator = PasswordResetTokenGenerator()
-            token = token_generator.make_token(user)
-            uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
+                # Generate activation token
+                token_generator = PasswordResetTokenGenerator()
+                token = token_generator.make_token(user)
+                uidb64 = urlsafe_base64_encode(force_bytes(user.pk))
 
-            # Set expiry
-            profile.activation_key = token
-            profile.activation_expiry = timezone.now() + timezone.timedelta(hours=1)
-            profile.save()
+                # Set expiry
+                profile.activation_key = token
+                profile.activation_expiry = timezone.now() + timezone.timedelta(hours=1)
+                profile.save()
 
-            # Send activation email
-            activation_link = request.build_absolute_uri(reverse('activate', args=[uidb64, token]))
-            send_mail(
-                'Activate Your Account',
-                f'Click the link to activate your account: {activation_link}\nLink expires in 1 hour.',
-                settings.DEFAULT_FROM_EMAIL,
-                [email],
-                fail_silently=False,
-            )
+                # Send activation email
+                activation_link = request.build_absolute_uri(reverse('activate', args=[uidb64, token]))
+                send_mail(
+                    'Activate Your Account',
+                    f'Click the link to activate your account: {activation_link}\nLink expires in 1 hour.',
+                    settings.DEFAULT_FROM_EMAIL,
+                    [email],
+                    fail_silently=False,
+                )
 
-            return redirect('login')  # Redirect to login
+                # Add a success message
+                messages.success(request, "Account created successfully. Please check your email to activate your account.")
+                return redirect('login')  # Redirect to login
+            except IntegrityError:
+                # This catch is a fallback if the above check fails for some reason
+                messages.error(request, "An internal error occurred. Please try again later.")
+                return render(request, 'register.html', {'form': form})
+            except Exception as e:
+                # Catch any other unexpected errors
+                messages.error(request, f"An unexpected error occurred: {e}")
+                return render(request, 'register.html', {'form': form})
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
