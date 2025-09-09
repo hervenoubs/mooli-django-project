@@ -35,6 +35,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
+    '0.0.0.0',
     'whereas-circular-basin-bl.trycloudflare.com',
 ]
 
@@ -104,8 +105,10 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'dashboard'
 
 # Celery Configuration
-CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis broker for task queue
-CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # Store task results
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Redis broker for task queue
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # Store task results
+CELERY_BROKER_URL = 'redis://redis:6379/0'  # Change from 'localhost' to 'redis'
+CELERY_RESULT_BACKEND = 'redis://redis:6379/0'  # Change from 'localhost' to 'redis'
 CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -142,7 +145,8 @@ DATABASES = {
         'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
+        # 'HOST': os.getenv('DB_HOST'),
+        'HOST': 'host.docker.internal',
         'PORT': os.getenv('DB_PORT'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",

@@ -1,0 +1,58 @@
+cat > .gitignore << 'EOF'
+# Docker and environment
+.env
+.env.local
+.env.production
+docker-compose.override.yml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py.class
+.Python
+env/
+venv/
+.venv/
+env.bak/
+venv.bak/
+new_env/
+new_env
+
+# Database
+*.sqlite3
+*.db
+dump.rdb
+
+# Static files and media
+staticfiles/
+media/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Application specific
+celerybeat-schedule
+debug.log
+*.log
+logs/
+tmp/
+temp/
+temp_uploads/
+faiss_index/
+
+# Docker files (optional - you might want to commit these)
+# .dockerignore
+# Dockerfile
+# docker-compose.yml
+# requirements.txt
+# .env.example
+EOF
